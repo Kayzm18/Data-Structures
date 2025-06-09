@@ -23,13 +23,26 @@ void traverseList(Node* head) {
 
     while (head != nullptr) {
 
-        // Printing data of current node
         cout << head->data << " ";
-
-        // Moving to the next node
         head = head->next;
     }
     cout << endl;
+}
+
+bool search(Node* head){
+    int key;
+    cout<<"Enter the value you want to find"; cin>> key; 
+
+
+    Node* curr =head;
+
+    while(curr != NULL){
+        if(curr->data == key) return true;
+
+
+     curr = curr->next;    
+    }
+    return false;
 }
 
 int main() {
@@ -41,6 +54,12 @@ int main() {
     head->next->next->next = new Node(40);
 
     traverseList(head);
+
+
+    if (search(head))// searching for a value
+        cout << "Yes";
+    else
+        cout << "No";
 
     return 0;
 }

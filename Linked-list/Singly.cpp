@@ -31,7 +31,7 @@ void traverseList(Node* head) {
 
 bool search(Node* head){
     int key;
-    cout<<"Enter the value you want to find"; cin>> key; 
+    cout<<"Enter the value you want to find "; cin>> key; 
 
 
     Node* curr =head;
@@ -63,6 +63,23 @@ Node* Insertion(int new_data, Node* head){
     return new_node;
 }
 
+Node* pop(int data1, Node* head){
+    Node* new_node = new Node(data1);
+
+    if(head == nullptr){
+        return new_node;
+    }
+
+    Node* last = head;
+
+    while(last->next != nullptr){
+        last = last->next;
+    }
+
+    last->next = new_node;
+    return head;
+}
+
 int main() {
   
     
@@ -71,18 +88,26 @@ int main() {
     head->next->next = new Node(30);
     head->next->next->next = new Node(40);
 
+    cout<<"Orginal list ";
     printlist(head);
 
 
-    if (search(head))// searching for a value
-        cout << "Yes\n";
-    else
-        cout << "No\n";
-        
+    cout<<"Inserting 5 at the begining"; 
     int data = 5;
     head = Insertion(data, head);  
     
     printlist(head);
+
+    cout<<"Entering 50 at the end of the list";
+    int data1 = 50;
+    head = pop(data1, head);
+
+    printlist(head);
+    
+    if (search(head))// searching for a value
+        cout << "Yes\n";
+    else
+        cout << "No\n";
 
         return 0;
 }

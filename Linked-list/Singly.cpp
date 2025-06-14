@@ -45,6 +45,24 @@ bool search(Node* head){
     return false;
 }
 
+void printlist(Node* head){
+    Node* curr = head;
+    while (curr != nullptr){
+        cout<<" "<<curr->data;
+        curr = curr->next;
+    }
+    cout<<endl;
+} 
+
+
+Node* Insertion(int new_data, Node* head){
+    Node* new_node = new Node(new_data);
+
+    new_node->next = head;
+
+    return new_node;
+}
+
 int main() {
   
     
@@ -53,13 +71,18 @@ int main() {
     head->next->next = new Node(30);
     head->next->next->next = new Node(40);
 
-    traverseList(head);
+    printlist(head);
 
 
     if (search(head))// searching for a value
-        cout << "Yes";
+        cout << "Yes\n";
     else
-        cout << "No";
+        cout << "No\n";
+        
+    int data = 5;
+    head = Insertion(data, head);  
+    
+    printlist(head);
 
-    return 0;
+        return 0;
 }

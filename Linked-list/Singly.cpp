@@ -80,6 +80,20 @@ Node* pop(int data1, Node* head){
     return head;
 }
 
+Node* deletehead(Node* head){
+    if(head == nullptr){
+        return nullptr;
+    }
+
+    Node* temp = head;
+    head = head->next;
+    
+    delete temp;
+
+    return head;
+}
+
+
 int main() {
   
     
@@ -102,6 +116,9 @@ int main() {
     int data1 = 50;
     head = pop(data1, head);
 
+    printlist(head);
+
+    head = deletehead(head);
     printlist(head);
     
     if (search(head))// searching for a value
